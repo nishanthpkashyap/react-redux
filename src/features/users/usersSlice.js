@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { get } from "axios";
+import axios from "axios";
 
 const INITIAL_STATE = {
   loading: false,
@@ -9,8 +9,8 @@ const INITIAL_STATE = {
 
 // create async thunk generates 3 actions - pending, fulfilled, and rejected, so need to handle errors
 // we can use the fetchUsersList() to access the 3 action types and handle state transition by adding extraReducers
-const fetchUsersList = createAsyncThunk("users/fetchUsers", async () => {
-  const { data } = await get(
+export const fetchUsersList = createAsyncThunk("users/fetchUsers", async () => {
+  const { data } = await axios.get(
     "https://jsonplaceholder.typicode.com/users"
   );
   const users = data.map((user) => user.id);
@@ -37,7 +37,4 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export default {
-  fetchUsersList,
-  userReducer: reducer,
-};
+export const userReducer = reducer;
