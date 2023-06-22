@@ -10,10 +10,16 @@ const {actions, reducer} = createSlice({
     initialState: INITIAL_STATE,
     reducers: {
         order: (state, action)=>{
-            state.no_of_icecreams -= action.payload
+            if(action.payload)
+                state.no_of_icecreams -= action.payload;
+            else
+                state.no_of_icecreams --;
         },
         restock: (state, action)=>{
-            state.no_of_icecreams += action.payload
+            if(action.payload)
+                state.no_of_icecreams += action.payload;
+            else
+                state.no_of_icecreams ++;
         }
     },
     //create a extraReducer to handle scenario where icecream is given for free if cake is ordered

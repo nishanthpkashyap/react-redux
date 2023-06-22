@@ -11,10 +11,16 @@ const {actions, reducer} = createSlice({
     initialState: INITIAL_STATE,
     reducers: {
         order: (state, action)=>{
-            state.no_of_cakes -= action.payload;
+            if(action.payload)
+                state.no_of_cakes -= action.payload;
+            else
+                state.no_of_cakes --;
         },
         restock: (state, action)=>{
-            state.no_of_cakes += action.payload;
+            if(action.payload)
+                state.no_of_cakes += action.payload;
+            else
+                state.no_of_cakes ++;
         }
     }
 });
