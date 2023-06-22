@@ -11,7 +11,7 @@ export const UserView = () => {
     <div>
       <Typography.Title level={2} style={{cursor: "pointer"}} onClick={() => {dispatch(fetchUsersList())}}>List of Users</Typography.Title>
       <Spin spinning={loading} tip="loading..." size="default">
-        {data.length > 0 ? ( data.map((user) => <li key={user.id}>{user.name}</li>)) : (<h4 style={{ color: "red" }}>{error}</h4>)}
+        {data.length > 0 ? ( data.map((user) => <li key={user.id}>{user.name}</li>)) : (<Typography.Title level={4} style={{ color: "red" }}>{error}</Typography.Title>)}
       </Spin>
     </div>
   );
